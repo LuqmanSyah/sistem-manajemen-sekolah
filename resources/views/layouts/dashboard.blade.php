@@ -142,7 +142,20 @@
         }
         setInterval(updateClock, 1000);
     </script>
+    <script>
+        const checkboxes = document.querySelectorAll('.single-checkbox');
 
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                // Ketika satu checkbox dicentang, nonaktifkan yang lain
+                checkboxes.forEach(otherCheckbox => {
+                    if (otherCheckbox !== checkbox) {
+                        otherCheckbox = checkbox.checked;
+                    }
+                });
+            });
+        });
+    </script>
     @stack('scripts')
 
 </body>

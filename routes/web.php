@@ -23,6 +23,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\teacher\AbsenController;
 use App\Http\Controllers\VacancyController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -174,6 +175,8 @@ Route::middleware('auth')->group(function () {
         // Jadwal Mengajar
         Route::prefix('schedule')->name('schedule.')->group(function () {
             Route::get('/', [TeacherScheduleController::class, 'index'])->name('index');
+            Route::get('/{id}/absen', [TeacherScheduleController::class, 'absen'])->name('absen');
+            Route::post('/{id}/absen', [TeacherScheduleController::class, 'storeAbsen'])->name('storeAbsen');
         });
     });
 
